@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style>
+    input[type=text], select {
+        width: 100%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+    input[type=file] {
+        width: 100%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        display: inline-block;
+        box-sizing: border-box;
+    }
+    input[type=submit],input[type=reset] {
+        width: 100%;
+        background-color: #297e46;
+        color: white;
+        padding: 14px 20px;
+        margin: 8px 0;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+    input[type=reset] {
+        background-color: #777;
+    }
+    input[type=submit]:hover {
+        background-color: #1f5932;
+    }
+    input[type=reset]:hover {
+        background-color: #555;
+    }
+    textarea {
+        width: 100%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+    label {
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+    }
+
+    div {
+        width: 50%; 
+        margin: 0 auto; 
+        text-align: left;
+    }
+
+    h1 {
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        font-size: 40px;
+        margin: 16px auto;
+    }
+
+    #form-div {
+        border-radius: 5px;
+        background-color: #f2f2f2;
+        padding: 20px;
+    }
+    ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background-color: #1f5932;
+    }
+
+    li {
+        float: left;
+    }
+
+    li a {
+        display: inline-block;
+        color: white;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+    }
+
+    li a:hover {
+        text-decoration: underline;
+    }
+    body {
+        font-family: Arial;
+        margin: 0 0 16px 0;
+    }
+</style>
+</head>
+
+<body>
+    <nav>
+        <ul>
+            <li><a>Lanner Web Form</a></li>
+            <li style="float: right;">
+              {% if user.is_authenticated %}
+              <a>Hello, {{user.username}}</a>
+              <a href="/logout">Logout</a>
+              {% else %}
+              <a href="/login">Login to edit</a>
+              {% endif %}
+          </li>
+    </nav>
+
+    <div style="text-align: center;"><h1>Lanner Web Form</h1></div>
+    <div id="form-div">
+        <form method="POST" action="" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form_entry }}
+            {{ files_entry }}
+            <input type="submit" value="send"/>
+            <input type="reset" value="clear form">
+        </form>
+    </div>
+</body>
+</html>
+
+

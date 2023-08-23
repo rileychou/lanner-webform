@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial;
+  padding: 0;
+  margin: 0 0 16px 0;
+  background: #eee;
+}
+
+h1, h2, h3, h4, h5, h6
+{
+  font-weight: normal;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #1f5932;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: inline-block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover {
+    text-decoration: underline;
+}
+
+.leftcolumn {   
+  float: left;
+  width: 100%;
+  padding-top: 20px;
+}
+
+.card {
+   background-color: white;
+   padding: 20px;
+   width: 50%;
+   margin: auto;
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+#edit_button {
+  padding: 10px 14px;
+  background-color: #297e46;
+  color:white;
+  text-decoration: none;
+  border-radius: 4px;
+}
+
+#edit_button:hover {
+        background-color: #1f5932;
+    }
+
+@media screen and (max-width: 800px) {
+  .leftcolumn, .rightcolumn {   
+    width: 100%;
+    padding: 0;
+  }
+}
+</style>
+</head>
+<body>
+<nav>
+    <ul>
+        <li><a href="/submissions">Back to submissions &larr; </a></li>
+        <li style="float: right;">
+          {% if user.is_authenticated %}
+          <a>Hello, {{user.username}}</a>
+          <a href="/logout">Logout</a>
+          {% else %}
+          <a href="/login">Login to edit</a>
+          {% endif %}
+      </li>
+</nav>
+<div class="row">
+  <div class="leftcolumn">
+    <div class="card">
+        <h2><strong>Case Number:</strong> {{form_entry.case_num}}</h2>
+        <h5><strong>Inspector:</strong> {{form_entry.inspector}}</h5>
+        <h5><strong>Customer / Supplier:</strong> {{form_entry.customer_supplier}}</h5>
+        <h5><strong>Model Part Name:</strong> {{form_entry.model_partname}}</h5>
+        <h5><strong>Lanner Part No.:</strong> {{form_entry.lanner_partno}}</h5>
+        <h5><strong>Nonconforming Quantity:</strong> {{form_entry.nonconf_quantity}}</h5>
+        <h5><strong>Total Lot Size:</strong> {{form_entry.total_lot_size}}</h5>
+        <h5><strong>Work Order / Purchase Order Number:</strong> {{form_entry.wo_po_number}}</h5>
+        <h5><strong>Serial Numbers:</strong> {{form_entry.serial_numbers}}</h5>
+        <h5><strong>Inspection Result:</strong> {{form_entry.inspection_result}}</h5>
+        <h5><strong>NCMR:</strong> {{form_entry.ncmr}}</h5>
+        <h5><strong>Inspection Report if Rejected:</strong> {{form_entry.insp_report_if_rej}}</h5>
+        <!-- should only show when logged in -->
+        {% if user.is_authenticated %}
+        <a id="edit_button" href="edit/{{form_entry.case_num}}">Edit entry</a>
+        {% endif %}
+        
+    </div>
+     
+  </div>
+</div>
+
+</body>
+</html>
