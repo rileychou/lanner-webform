@@ -1,7 +1,12 @@
 # lanner-webform
 
 ## Setup instructions
-First, make sure Python is installed on your computer. That will install pip (package Installation for python).
+First, make sure Python is installed on your computer. Open command prompt / terminal and type
+```
+python
+```
+
+If it shows a version number, you are good to go. If Python is not installed, download it here: https://www.python.org/downloads/
 
 Next, install Django:
 ```
