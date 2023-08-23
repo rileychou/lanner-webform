@@ -17,7 +17,11 @@ For example, if I want it in my desktop folder on my windows machine I would typ
 cd \Users\Riley\Desktop
 ```
 
-Clone the repository. This downloads the code onto your computer.
+Now we can pull the code onto your computer.
+
+Before we do that, sure git is installed on your computer: https://git-scm.com/downloads
+
+Next, clone the repository. This downloads the code onto your computer.
 ```
 git clone https://github.com/rileychou/lanner-webform.git
 ```
@@ -27,7 +31,7 @@ Switch into the project folder:
 cd lanner-webform
 ```
 
-Start up the server:
+Start up the server (run this line every time you want to start the server):
 ```
 python manage.py runserver
 ```
